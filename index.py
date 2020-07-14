@@ -100,11 +100,21 @@ class Game:
             except:
                 print("This is not a number. Please enter a number from 1 to 9")
         key = key - 1
-        
-        if key in range(0,9):
-            Game().__boards(key, board = board, num=num)
-        else: 
-            print("not in range")
+        if num == 0:
+            if key in range(0,9):
+                Game().__boards(key, board = board, num=num)
+            else: 
+                print("not in range")
+        if num == 1:
+            if key in range(0,15):
+                Game().__boards(key, board = board, num=num)
+            else: 
+                print("not in range")
+        if num == 2:
+            if key in range(0,25):
+                Game().__boards(key, board = board, num=num)
+            else: 
+                print("not in range")
 
 
     def randomSet(self, num=0):
@@ -190,7 +200,7 @@ class Game:
             if column_1 or column_2 or column_3 or column_4 or column_5:
                 Game().startGame(stop=1, num = num) 
 
-            diagonal_1 = Game().__boards(num = num)[1] == Game().__boards(num = num)[6] == Game().__boards(num = num)[12] == Game().__boards(num = num)[18] == Game().__boards(num = num)[24] != "-"
+            diagonal_1 = Game().__boards(num = num)[0] == Game().__boards(num = num)[6] == Game().__boards(num = num)[12] == Game().__boards(num = num)[18] == Game().__boards(num = num)[24] != "-"
             diagonal_2 = Game().__boards(num = num)[4] == Game().__boards(num = num)[8] == Game().__boards(num = num)[12] == Game().__boards(num = num)[16] == Game().__boards(num = num)[20] != "-"
 
             if diagonal_1 or diagonal_2:
