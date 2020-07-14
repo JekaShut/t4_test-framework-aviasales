@@ -49,10 +49,20 @@ class Game:
         return(board[num]) 
 
     def selectBoard(self):
-        x = input("Выберите вариант игры: 1 - 3x3, 2 - 4x4, 3 - 5x5 : ")
-        num = int(x)-1
-        board = [board1, board2, board3]
-        Game().startGame(stop=0,board=board, num=num)
+        error = 1
+        while error == True:
+            try:
+                x = int(input("Выберите вариант игры: 1 - 3x3, 2 - 4x4, 3 - 5x5 : "))
+                error = False
+            except:
+                print("This is not a number. Please enter a valid number from 1 to 3")
+        num = x-1
+        if num in range(0,3):
+            board = [board1, board2, board3]
+            Game().startGame(stop=0,board=board, num=num)
+        else: 
+            print("You must select number from 1 to 3")
+            Game().selectBoard()
 
     def display_board(self,num = 1):
         
@@ -95,10 +105,10 @@ class Game:
         error = 1
         while error == 1:
             try:
-                key = int(input("enter pos from 1 to 9: "))
+                key = int(input("enter a number "))
                 error = 0
             except:
-                print("This is not a number. Please enter a number from 1 to 9")
+                print("This is not a number. Please enter a valid number")
         key = key - 1
         if num == 0:
             if key in range(0,9):
