@@ -10,15 +10,15 @@ class Game:
 
         board1 = [  "-","-","-",
                     "-","-","-",
-                    "-","-","-"   ]
+                    "-","-","-"   ] # стартовая доска 111
         if key == None:
             pass
         else:
-            board1[key] = "x"
+            board1[key] = "x"  # заменяем "-" на "X" 111
 
         return(board1) #добавить выбор доски
     def display_board(self):
-        print(Game().__boards()[0] + "|" + Game().__boards()[1] + "|" + Game().__boards()[2])
+        print(Game().__boards()[0] + "|" + Game().__boards()[1] + "|" + Game().__boards()[2])  ### но при любом ходе отрисовывает пустую(стартовую доску) 111
         print(Game().__boards()[3] + "|" + Game().__boards()[4] + "|" + Game().__boards()[5])
         print(Game().__boards()[6] + "|" + Game().__boards()[7] + "|" + Game().__boards()[8])
     
