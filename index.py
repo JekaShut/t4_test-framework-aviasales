@@ -58,23 +58,22 @@ class Game:
         
         if num == 0:
             
-            print(Game().__boards()[0] + "|" + Game().__boards()[1] + "|" + Game().__boards()[2]) 
-            print(Game().__boards()[3] + "|" + Game().__boards()[4] + "|" + Game().__boards()[5])
-            print(Game().__boards()[6] + "|" + Game().__boards()[7] + "|" + Game().__boards()[8])
+            print(Game().__boards()[0] + "|" + Game().__boards()[1] + "|" + Game().__boards()[2] + "     1 | 2 | 3")
+            print(Game().__boards()[3] + "|" + Game().__boards()[4] + "|" + Game().__boards()[5] + "     4 | 5 | 6")
+            print(Game().__boards()[6] + "|" + Game().__boards()[7] + "|" + Game().__boards()[8] + "     7 | 8 | 9")
         if num == 1:
-            print(Game().__boards(num=num)[0] + "|" + Game().__boards(num=num)[1] + "|" + Game().__boards(num=num)[2] + "|" + Game().__boards(num=num)[3])
-            print(Game().__boards(num=num)[4] + "|" + Game().__boards(num=num)[5] + "|" + Game().__boards(num=num)[6] + "|" + Game().__boards(num=num)[7])
-            print(Game().__boards(num=num)[8] + "|" + Game().__boards(num=num)[9] + "|" + Game().__boards(num=num)[10] + "|" + Game().__boards(num=num)[11])
-            print(Game().__boards(num=num)[12] + "|" + Game().__boards(num=num)[13] + "|" + Game().__boards(num=num)[14] + "|" + Game().__boards(num=num)[15])
+            print(Game().__boards(num=num)[0] + "|" + Game().__boards(num=num)[1] + "|" + Game().__boards(num=num)[2] + "|" + Game().__boards(num=num)[3] + "     1  | 2  | 3  | 4")
+            print(Game().__boards(num=num)[4] + "|" + Game().__boards(num=num)[5] + "|" + Game().__boards(num=num)[6] + "|" + Game().__boards(num=num)[7] + "     5  | 6  | 7  | 8")
+            print(Game().__boards(num=num)[8] + "|" + Game().__boards(num=num)[9] + "|" + Game().__boards(num=num)[10] + "|" + Game().__boards(num=num)[11] + "     9  | 10 | 11 | 12")
+            print(Game().__boards(num=num)[12] + "|" + Game().__boards(num=num)[13] + "|" + Game().__boards(num=num)[14] + "|" + Game().__boards(num=num)[15] + "     13 | 14 | 15 | 16")
         if num == 2:
-            print(Game().__boards(num=num)[0] + "|" + Game().__boards(num=num)[1] + "|" + Game().__boards(num=num)[2] + "|" + Game().__boards(num=num)[3] + "|" + Game().__boards(num=num)[4])
-            print(Game().__boards(num=num)[5] + "|" + Game().__boards(num=num)[6] + "|" + Game().__boards(num=num)[7] + "|" + Game().__boards(num=num)[8] + "|" + Game().__boards(num=num)[9])
-            print(Game().__boards(num=num)[10] + "|" + Game().__boards(num=num)[11] + "|" + Game().__boards(num=num)[12] + "|" + Game().__boards(num=num)[13] + "|" + Game().__boards(num=num)[14])
-            print(Game().__boards(num=num)[15] + "|" + Game().__boards(num=num)[16] + "|" + Game().__boards(num=num)[17] + "|" + Game().__boards(num=num)[18] + "|" + Game().__boards(num=num)[19])
-            print(Game().__boards(num=num)[20] + "|" + Game().__boards(num=num)[21] + "|" + Game().__boards(num=num)[22] + "|" + Game().__boards(num=num)[23] + "|" + Game().__boards(num=num)[24])
+            print(Game().__boards(num=num)[0] + "|" + Game().__boards(num=num)[1] + "|" + Game().__boards(num=num)[2] + "|" + Game().__boards(num=num)[3] + "|" + Game().__boards(num=num)[4] + "     1  | 2  | 3  | 4  | 5")
+            print(Game().__boards(num=num)[5] + "|" + Game().__boards(num=num)[6] + "|" + Game().__boards(num=num)[7] + "|" + Game().__boards(num=num)[8] + "|" + Game().__boards(num=num)[9] + "     6  | 7  | 8  | 9  | 10")
+            print(Game().__boards(num=num)[10] + "|" + Game().__boards(num=num)[11] + "|" + Game().__boards(num=num)[12] + "|" + Game().__boards(num=num)[13] + "|" + Game().__boards(num=num)[14] + "     11 | 12 | 13 | 14 | 15")
+            print(Game().__boards(num=num)[15] + "|" + Game().__boards(num=num)[16] + "|" + Game().__boards(num=num)[17] + "|" + Game().__boards(num=num)[18] + "|" + Game().__boards(num=num)[19] + "     16 | 17 | 18 | 19 | 20")
+            print(Game().__boards(num=num)[20] + "|" + Game().__boards(num=num)[21] + "|" + Game().__boards(num=num)[22] + "|" + Game().__boards(num=num)[23] + "|" + Game().__boards(num=num)[24] + "     21 | 22 | 23 | 24 | 25")
 
     def startGame(self, stop = 0, num=0, board = [board1, board2, board3]):
-        print(str(num) + "startGame")
         num = num
         while stop == 0:
             
@@ -128,32 +127,74 @@ class Game:
 
     
     def checkWin(self, num = 0):
-        row_1 = Game().__boards()[0] == Game().__boards()[1] == Game().__boards()[2] != "-"
-        row_2 = Game().__boards()[3] == Game().__boards()[4] == Game().__boards()[5] != "-"
-        row_3 = Game().__boards()[6] == Game().__boards()[7] == Game().__boards()[8] != "-"
+        if num == 0: #3x3
+            row_1 = Game().__boards()[0] == Game().__boards()[1] == Game().__boards()[2] != "-"
+            row_2 = Game().__boards()[3] == Game().__boards()[4] == Game().__boards()[5] != "-"
+            row_3 = Game().__boards()[6] == Game().__boards()[7] == Game().__boards()[8] != "-"
 
-        if row_1 or row_2 or row_3:
-            Game().startGame(stop=1, num = num)
+            if row_1 or row_2 or row_3:
+                Game().startGame(stop=1, num = num)
 
-        column_1 = Game().__boards()[0] == Game().__boards()[3] == Game().__boards()[6] != "-"
-        column_2 = Game().__boards()[1] == Game().__boards()[4] == Game().__boards()[7] != "-"
-        column_3 = Game().__boards()[2] == Game().__boards()[5] == Game().__boards()[8] != "-"
+            column_1 = Game().__boards()[0] == Game().__boards()[3] == Game().__boards()[6] != "-"
+            column_2 = Game().__boards()[1] == Game().__boards()[4] == Game().__boards()[7] != "-"
+            column_3 = Game().__boards()[2] == Game().__boards()[5] == Game().__boards()[8] != "-"
 
-        if column_1 or column_2 or column_3:
-            Game().startGame(stop=1, num = num)    
+            if column_1 or column_2 or column_3:
+                Game().startGame(stop=1, num = num)    
 
-        diagonal_1 = Game().__boards()[0] == Game().__boards()[4] == Game().__boards()[8] != "-"
-        diagonal_2 = Game().__boards()[2] == Game().__boards()[4] == Game().__boards()[6] != "-"
+            diagonal_1 = Game().__boards()[0] == Game().__boards()[4] == Game().__boards()[8] != "-"
+            diagonal_2 = Game().__boards()[2] == Game().__boards()[4] == Game().__boards()[6] != "-"
 
-        if diagonal_1 or diagonal_2:
-            Game().startGame(stop=1, num = num)
-
+            if diagonal_1 or diagonal_2:
+                Game().startGame(stop=1, num = num)
         
+        if num == 1: #4x4
+            row_1 = Game().__boards(num = num)[0] == Game().__boards(num = num)[1] == Game().__boards(num = num)[2] == Game().__boards(num = num)[3] != "-"
+            row_2 = Game().__boards(num = num)[4] == Game().__boards(num = num)[5] == Game().__boards(num = num)[6] == Game().__boards(num = num)[7] != "-"
+            row_3 = Game().__boards(num = num)[8] == Game().__boards(num = num)[9] == Game().__boards(num = num)[10] == Game().__boards(num = num)[11] != "-"
+            row_4 = Game().__boards(num = num)[12] == Game().__boards(num = num)[13] == Game().__boards(num = num)[14] == Game().__boards(num = num)[15] != "-"
 
-    def checkTie(self):
-        pass
+            if row_1 or row_2 or row_3 or row_4:
+                Game().startGame(stop=1, num = num)  
 
-        
-        
-    
+            column_1 = Game().__boards(num = num)[0] == Game().__boards(num = num)[4] == Game().__boards(num = num)[8] == Game().__boards(num = num)[12] != "-"
+            column_2 = Game().__boards(num = num)[1] == Game().__boards(num = num)[5] == Game().__boards(num = num)[9] == Game().__boards(num = num)[13] != "-"
+            column_3 = Game().__boards(num = num)[2] == Game().__boards(num = num)[6] == Game().__boards(num = num)[10] == Game().__boards(num = num)[14] != "-"
+            column_4 = Game().__boards(num = num)[3] == Game().__boards(num = num)[7] == Game().__boards(num = num)[11] == Game().__boards(num = num)[15] != "-"
+            
+            if column_1 or column_2 or column_3 or column_4:
+                Game().startGame(stop=1, num = num) 
+
+            diagonal_1 = Game().__boards(num = num)[0] == Game().__boards(num = num)[5] == Game().__boards(num = num)[10] == Game().__boards(num = num)[15] != "-"
+            diagonal_2 = Game().__boards(num = num)[3] == Game().__boards(num = num)[6] == Game().__boards(num = num)[9] == Game().__boards(num = num)[12] != "-"
+
+            if diagonal_1 or diagonal_2:
+                Game().startGame(stop=1, num = num)
+
+        if num == 2: #5x5
+            row_1 = Game().__boards(num = num)[0] == Game().__boards(num = num)[1] == Game().__boards(num = num)[2] == Game().__boards(num = num)[3] == Game().__boards(num = num)[4] != "-"
+            row_2 = Game().__boards(num = num)[5] == Game().__boards(num = num)[6] == Game().__boards(num = num)[7] == Game().__boards(num = num)[8] == Game().__boards(num = num)[9] != "-"
+            row_3 = Game().__boards(num = num)[10] == Game().__boards(num = num)[11] == Game().__boards(num = num)[12] == Game().__boards(num = num)[13] == Game().__boards(num = num)[14] != "-"
+            row_4 = Game().__boards(num = num)[15] == Game().__boards(num = num)[16] == Game().__boards(num = num)[17] == Game().__boards(num = num)[18] == Game().__boards(num = num)[19] != "-"
+            row_5 = Game().__boards(num = num)[20] == Game().__boards(num = num)[21] == Game().__boards(num = num)[22] == Game().__boards(num = num)[23] == Game().__boards(num = num)[24] != "-"
+
+            if row_1 or row_2 or row_3 or row_4 or row_5:
+                Game().startGame(stop=1, num = num) 
+
+            column_1 = Game().__boards(num = num)[0] == Game().__boards(num = num)[5] == Game().__boards(num = num)[10] == Game().__boards(num = num)[15] == Game().__boards(num = num)[20] != "-"
+            column_2 = Game().__boards(num = num)[1] == Game().__boards(num = num)[6] == Game().__boards(num = num)[11] == Game().__boards(num = num)[16] == Game().__boards(num = num)[21] != "-"
+            column_3 = Game().__boards(num = num)[2] == Game().__boards(num = num)[7] == Game().__boards(num = num)[12] == Game().__boards(num = num)[17] == Game().__boards(num = num)[22] != "-"
+            column_4 = Game().__boards(num = num)[3] == Game().__boards(num = num)[8] == Game().__boards(num = num)[13] == Game().__boards(num = num)[18] == Game().__boards(num = num)[23] != "-"
+            column_5 = Game().__boards(num = num)[4] == Game().__boards(num = num)[9] == Game().__boards(num = num)[14] == Game().__boards(num = num)[19] == Game().__boards(num = num)[24] != "-"
+            
+            if column_1 or column_2 or column_3 or column_4 or column_5:
+                Game().startGame(stop=1, num = num) 
+
+            diagonal_1 = Game().__boards(num = num)[1] == Game().__boards(num = num)[6] == Game().__boards(num = num)[12] == Game().__boards(num = num)[18] == Game().__boards(num = num)[24] != "-"
+            diagonal_2 = Game().__boards(num = num)[4] == Game().__boards(num = num)[8] == Game().__boards(num = num)[12] == Game().__boards(num = num)[16] == Game().__boards(num = num)[20] != "-"
+
+            if diagonal_1 or diagonal_2:
+                Game().startGame(stop=1, num = num)
+            
+
 Game().selectBoard() 
