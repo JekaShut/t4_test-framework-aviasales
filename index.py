@@ -62,8 +62,14 @@ class Game:
     def actualTurn(self, actualPlayer):
         Game().display_board()
         actualPlayer = "X"
-        key = input("enter pos from 1 to 9: ") #тут добавить isinstanse int
-        key = int(key) - 1
+        error = 1
+        while error == 1:
+            try:
+                key = int(input("enter pos from 1 to 9: ")) #тут добавить isinstanse int
+                error = 0
+            except:
+                print("This is not a number. Please enter a number from 1 to 9")
+        key = key - 1
         
         if key in range(0,9):
             Game().__boards(key)
