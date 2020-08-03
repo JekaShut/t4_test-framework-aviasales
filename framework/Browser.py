@@ -1,8 +1,7 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from common import jsonGetter
+from framework.common import jsonGetter
 
 # from logger.logger import Logger
 

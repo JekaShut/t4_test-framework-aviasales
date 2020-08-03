@@ -1,4 +1,4 @@
-from common import jsonGetter
+from framework.common import jsonGetter
 from framework.logger.logger import Logger
 from framework.utils import LinkOperations
 

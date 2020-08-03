@@ -1,9 +1,6 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from common import jsonGetter
 from framework.Browser import *
-from abc import ABC, abstractmethod
+from abc import ABC
 
 WaitTime = jsonGetter.GetJson.getConfig("WaitTime")
 

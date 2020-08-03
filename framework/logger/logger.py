@@ -2,7 +2,7 @@ import logging
 import os
 import time
 
-from common import jsonGetter
+from framework.common import jsonGetter
 
 BROWSER = jsonGetter.GetJson.getConfig("actualBrowser")
 
