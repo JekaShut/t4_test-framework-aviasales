@@ -23,9 +23,9 @@ class MainPage:
         self.CalendarDayToodayXpath = "//div[@class='calendar__day-cell today']"
         self.PassiveInputDateXpath1 = "//div[1]/div/input[@class='trip-duration__date-input']"
 
-    def sendKeys(self):
+    def findTickets(self):
 
-        ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(self.ToText)
+
         # тут сделать нажатие на кнопку
 
         ElementOperations.Input(locatorType="Xpath", locator=self.openBookingXpath).click()
@@ -38,7 +38,9 @@ class MainPage:
         ElementOperations.Button(locatorType="Xpath", locator=self.FromThereXpath).click()
         ElementOperations.Button(locatorType="Xpath", locator=self.BackTicketXpath).click()
         ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(self.FromText)
+        ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(self.ToText)
+        time.sleep(1) # тут без слипа вот прям вообще никак не получалось
         ElementOperations.Button(locatorType="Xpath", locator=self.ConfirmXpath).click()            # CONFIRM
-        time.sleep(4)
+
 
 
