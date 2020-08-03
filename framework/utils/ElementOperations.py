@@ -12,14 +12,21 @@ class Button(BaseElement):
         return self.element.text
 
 
-class TextBox(BaseElement):
+
+class Input(BaseElement):
     def click(self):
         self._find()
         self.element.click()
 
-    def input(self, keys):
+    def send(self, keys):
         self._find()
         self.element.send_keys(keys)
+
+
+class Label(BaseElement):
+    def getText(self):
+        self._find()
+        return self.element.text
 
 
 
