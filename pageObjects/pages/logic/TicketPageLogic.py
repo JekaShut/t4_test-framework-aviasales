@@ -3,6 +3,12 @@ import random
 import re
 
 class logic:
+    def sortFunc(self, elem):
+        text = elem.text
+        pattern = "\\d+"
+        ticket = re.findall(pattern, text)
+        return ticket
+
     def checkValues(self, tickets):
         x = []
         for elem in tickets:
@@ -17,4 +23,7 @@ class logic:
             except:
                 x.append(elem)
 
+        x.sort(key=self.sortFunc)
         return x[0]
+
+

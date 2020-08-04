@@ -16,7 +16,7 @@ class TestSuite1:
         logger.info("Trying to open url: " + SITE)
         LinkOperations.Link(link=SITE).get()
         MainPage.MainPage().findTickets()
-        lowest = TicketsPage.Ticketspage().findTickets()
+        lowest = TicketsPage.Ticketspage().findTickets(0)
         assert lowest[0] == lowest[1], "The cheapest element is not first"
 
 
@@ -25,8 +25,8 @@ class TestSuite1:
         LinkOperations.Link(link=SITE).get()
         MainPage.MainPage().findTickets()
         TicketsPage.Ticketspage().findStraightPath()
-        lowest = TicketsPage.Ticketspage().findTickets()
-        assert lowest[-1] == lowest[1], "The cheapest element is not last"
-
+        lowest = TicketsPage.Ticketspage().findTickets(-1)
+        assert lowest[0] == lowest[1], "The cheapest element is not last"
+        pass
 
 

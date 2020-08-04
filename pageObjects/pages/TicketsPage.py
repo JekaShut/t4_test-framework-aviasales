@@ -13,10 +13,10 @@ class Ticketspage:
         self.TicketTextXpath = "//span[@class='buy-button__price']/span[@data-testid='price-with-logic']"
         self.StraightTextXpath = "//span[text()='Прямой']"
 
-    def findTickets(self):
+    def findTickets(self, position=0):
         tickets = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketTextXpath).find()
         lowestPrice = TicketPageLogic.logic().checkValues(tickets)
-        return tickets[0], lowestPrice
+        return tickets[position], lowestPrice
 
     def findStraightPath(self):
         ElementOperations.Button(locatorType="Xpath", locator=self.StraightTextXpath).click()
