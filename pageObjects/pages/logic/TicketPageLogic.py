@@ -5,7 +5,7 @@ import re
 class logic:
     def sortFunc(self, elem):
         text = elem.text
-        pattern = "\\d+"
+        pattern = "\d+\s?\d+?"
         ticket = re.findall(pattern, text)
         return ticket
 
