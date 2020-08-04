@@ -15,6 +15,7 @@ class Ticketspage:
         self.BagageXpath = "//div[@class='filters__item filter --baggage']"
         self.BagageOpenedAll = "//label[@for='baggage_all']"
         self.FullBagageXpath = "//label[@for='baggage_full_baggage']"
+        self.BagageTitleTextXpath = "//div[@class='ticket-tariffs__title']"
 
     def findTickets(self, position=0):
         tickets = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketTextXpath).find()
@@ -29,6 +30,12 @@ class Ticketspage:
         ElementOperations.Button(locatorType="Xpath", locator=self.BagageXpath).click()
         ElementOperations.Button(locatorType="Xpath", locator=self.BagageOpenedAll).click()
         ElementOperations.Button(locatorType="Xpath", locator=self.FullBagageXpath).click()
+
+        tickets = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketTextXpath).find()
+        withBagage = ElementOperations.ManyElements(locatorType="Xpath", locator=self.BagageTitleTextXpath)
+        lenTick = len(tickets)
+        lenBagage = len(withBagage)
+        return lenTick, lenBagage
 
 
 

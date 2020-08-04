@@ -32,7 +32,7 @@ class TestSuite1:
         logger.info("Trying to open url: " + SITE)
         LinkOperations.Link(link=SITE).get()
         MainPage.MainPage().findTickets()
-        TicketsPage.Ticketspage().setBagage()
-
+        data = TicketsPage.Ticketspage().setBagage()
+        assert data[0] == data[1], "quantity of tickets with bagage are not equal tickets quantity"
 
 
