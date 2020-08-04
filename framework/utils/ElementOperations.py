@@ -16,6 +16,10 @@ class Input(BaseElement):
         self._find()
         self.element.click()
 
+    def clear(self):
+        self._find()
+        self.element.clear()
+
     def send(self, keys):
         self._find()
         self.element.send_keys(keys)

@@ -15,7 +15,8 @@ class TestSuite1:
         logger.info("Trying to open url: " + SITE)
         LinkOperations.Link(link=SITE).get()
         MainPage.MainPage().findTickets()
-        TicketsPage.Ticketspage().findTickets()
+        lowest = TicketsPage.Ticketspage().findTickets()
+        assert lowest[0] == lowest[1]
 
 
 

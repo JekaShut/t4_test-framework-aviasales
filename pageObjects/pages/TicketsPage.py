@@ -14,13 +14,17 @@ class Ticketspage:
 
     def findTickets(self):
         tickets = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketTextXpath).find()
-        x = []
-        for ticket in tickets:
-            text = ticket.text
-            pattern = "\\d+"
-            price = re.findall(pattern, text)
-            x.append([ticket, price])
-        x.sort(key=lambda x: x[1])
-        lowestPrice = x[0][1]
-        pass
+        lowestPrice = TicketPageLogic.logic().checkValues(tickets)
+        return tickets[0], lowestPrice
 
+
+
+
+
+        #for ticket in tickets:
+        #    text = ticket.text
+        #    pattern = "\\d+"
+        #    price = re.findall(pattern, text)
+        #    x.append([ticket, price])
+        #x.sort(key=lambda x: x[1])
+        #lowestPrice = x[0][1]

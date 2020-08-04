@@ -37,6 +37,7 @@ class MainPage:
         #ElementOperations.Input(locatorType="Xpath", locator=self.PassiveInputDateXpath1)
         ElementOperations.Button(locatorType="Xpath", locator=self.FromThereXpath).click()
         ElementOperations.Button(locatorType="Xpath", locator=self.BackTicketXpath).click()
+        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).clear()
         ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(self.FromText)
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(self.ToText)
         time.sleep(1) # тут без слипа вот прям вообще никак не получалось
