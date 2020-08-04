@@ -45,6 +45,7 @@ class MainPage:
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).click()                  #click [TO]
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(toC)        #send text [TO]
         time.sleep(1) # тут без слипа вот прям вообще никак не получалось
+        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).click()                  # click [FROM]
         ElementOperations.Button(locatorType="Xpath", locator=self.ConfirmXpath).click()            # CONFIRM
 
 

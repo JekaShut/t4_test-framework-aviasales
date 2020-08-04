@@ -38,7 +38,7 @@ class TestSuite1:
         assert lowest[0] == lowest[1], "The cheapest element is not last"
 
     @pytest.mark.parametrize("fromC , toC",
-        testdata2
+        testdata3
     )
     def test_three(self, fromC, toC):
         logger.info("Trying to open url: " + SITE)
