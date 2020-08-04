@@ -27,6 +27,6 @@ class TestSuite1:
         TicketsPage.Ticketspage().findStraightPath()
         lowest = TicketsPage.Ticketspage().findTickets(-1)
         assert lowest[0] == lowest[1], "The cheapest element is not last"
-        pass
+
 
 
