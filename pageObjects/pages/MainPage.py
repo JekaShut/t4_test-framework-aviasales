@@ -3,7 +3,7 @@ from framework.utils import ElementOperations
 from pageObjects.pages.logic import MainPageLogic
 from framework.utils.BaseElement import Keys
 import time
-
+import pytest
 
 
 logger = Logger(logger="MainPage").getlog()
@@ -27,7 +27,7 @@ class MainPage:
         self.PassiveInputDateXpath1 = "//div[1]/div/input[@class='trip-duration__date-input']"
 
 
-    def findTickets(self):
+    def findTickets(self, fromC, toC):
 
         ElementOperations.Input(locatorType="Xpath", locator=self.openBookingXpath).click()         #Remove checkbox
         ElementOperations.Button(locatorType="Xpath", locator=self.ThereXpath).click()              #There .Куда
@@ -40,10 +40,10 @@ class MainPage:
 
         ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).click()                  # click [FROM]
         ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(Keys.BACKSPACE)
-        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(self.FromText)    #send text [FROM]
+        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(fromC)    #send text [FROM]
 
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).click()                  #click [TO]
-        ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(self.ToText)        #send text [TO]
+        ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(toC)        #send text [TO]
         time.sleep(1) # тут без слипа вот прям вообще никак не получалось
         ElementOperations.Button(locatorType="Xpath", locator=self.ConfirmXpath).click()            # CONFIRM
 
