@@ -32,7 +32,7 @@ class Ticketspage:
         ElementOperations.Button(locatorType="Xpath", locator=self.FullBagageXpath).click()
 
         tickets = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketTextXpath).find()
-        withBagage = ElementOperations.ManyElements(locatorType="Xpath", locator=self.BagageTitleTextXpath)
+        withBagage = ElementOperations.ManyElements(locatorType="Xpath", locator=self.BagageTitleTextXpath).find()
         lenTick = len(tickets)
         lenBagage = len(withBagage)
         return lenTick, lenBagage

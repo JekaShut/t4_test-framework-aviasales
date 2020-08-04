@@ -1,6 +1,7 @@
 from framework.utils.BaseElement import *
 
 
+
 class Button(BaseElement):
 
     def click(self):
