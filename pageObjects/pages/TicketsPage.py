@@ -12,6 +12,9 @@ class Ticketspage:
     def __init__(self):
         self.TicketTextXpath = "//span[@class='buy-button__price']/span[@data-testid='price-with-logic']"
         self.StraightTextXpath = "//span[text()='Прямой']"
+        self.BagageXpath = "//div[@class='filters__item filter --baggage']"
+        self.BagageOpenedAll = "//label[@for='baggage_all']"
+        self.FullBagageXpath = "//label[@for='baggage_full_baggage']"
 
     def findTickets(self, position=0):
         tickets = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketTextXpath).find()
@@ -22,13 +25,10 @@ class Ticketspage:
         ElementOperations.Button(locatorType="Xpath", locator=self.StraightTextXpath).click()
 
 
+    def setBagage(self):
+        ElementOperations.Button(locatorType="Xpath", locator=self.BagageXpath).click()
+        ElementOperations.Button(locatorType="Xpath", locator=self.BagageOpenedAll).click()
+        ElementOperations.Button(locatorType="Xpath", locator=self.FullBagageXpath).click()
 
 
 
-        #for ticket in tickets:
-        #    text = ticket.text
-        #    pattern = "\\d+"
-        #    price = re.findall(pattern, text)
-        #    x.append([ticket, price])
-        #x.sort(key=lambda x: x[1])
-        #lowestPrice = x[0][1]

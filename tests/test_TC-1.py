@@ -28,5 +28,11 @@ class TestSuite1:
         lowest = TicketsPage.Ticketspage().findTickets(-1)
         assert lowest[0] == lowest[1], "The cheapest element is not last"
 
+    def test_three(self):
+        logger.info("Trying to open url: " + SITE)
+        LinkOperations.Link(link=SITE).get()
+        MainPage.MainPage().findTickets()
+        TicketsPage.Ticketspage().setBagage()
+
 
 
