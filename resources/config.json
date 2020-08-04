@@ -1,5 +1,5 @@
 {
-  "actualBrowser": "FireFoxBrowser",
+  "actualBrowser": "ChromeBrowser",
   "SITE": "https://aviasales.ru",
   "DIR": "D:\\[A1QA]\\TEMP",
   "LOCAL": "by",

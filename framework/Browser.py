@@ -20,7 +20,7 @@ class ChromeBrowser():
         options.add_argument("--lang={}".format(locale))
         options.add_experimental_option("prefs", preferences)
         driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-        driver.set_page_load_timeout(10)
+        driver.set_page_load_timeout(20)
         driver.maximize_window()
         return (driver)
 
