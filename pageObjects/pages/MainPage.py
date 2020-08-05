@@ -54,6 +54,8 @@ class MainPage:
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(toC)                #send text [TO]
         logger.info("Trying to find dropdown")
         ElementOperations.Button(locatorType="Xpath", locator=self.DropdownXpath)._find()           #wait for text
+        logger.info("Trying to click TO input")
+        ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).click()  # click [TO]
         logger.info("Trying to click confirm button")
         ElementOperations.Button(locatorType="Xpath", locator=self.ConfirmXpath).click()            # CONFIRM
 
