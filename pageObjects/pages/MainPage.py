@@ -12,10 +12,9 @@ logger = Logger(logger="MainPage").getlog()
 class MainPage:
     def __init__(self):
         self.InNewPageXpath = "//label[@class='of_input_checkbox__label']"
-        self.FromXpath = "//input[@placeholder='Откуда']"
-        self.ToXpath = "//input[@placeholder='Куда']"
+        self.FromXpath = "//input[@id='origin']"
+        self.ToXpath = "//input[@id='destination']"
         self.ThereXpath = "//div[@class='trip-duration__input-wrapper --departure']"
-        self.ValueToXpath = "//input[@class='trip-duration__date-input --active']"
         self.FromThereXpath = "//div[@class='trip-duration__input-wrapper --return']"
         self.openBookingXpath = "//label[@class='of_input_checkbox__label']"
         self.BackTicketXpath = "//div[@class='trip-duration__content-head']/button"

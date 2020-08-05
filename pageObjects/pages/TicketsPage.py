@@ -11,7 +11,8 @@ logger = Logger(logger="TicketsPage").getlog()
 class Ticketspage:
     def __init__(self):
         self.TicketTextXpath = "//span[@class='buy-button__price']/span[@data-testid='price-with-logic']"
-        self.StraightTextXpath = "//span[text()='Прямой']"
+        self.StraightTextXpath = "//span[text()='Прямой']" # TODO: мб плохой локатор// тут по другому не получается,
+                                                        # разве что через индекс, но эта вкладка есть не на всех выдачах
         self.BagageXpath = "//div[@class='filters__item filter --baggage']"
         self.BagageOpenedAll = "//label[@for='baggage_all']"
         self.FullBagageXpath = "//label[@for='baggage_full_baggage']"
