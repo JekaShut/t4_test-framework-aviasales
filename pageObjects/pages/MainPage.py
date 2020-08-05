@@ -13,9 +13,7 @@ class MainPage:
     def __init__(self):
         self.InNewPageXpath = "//label[@class='of_input_checkbox__label']"
         self.FromXpath = "//input[@placeholder='Откуда']"
-        self.FromText = "Минск"
         self.ToXpath = "//input[@placeholder='Куда']"
-        self.ToText = "Стамбул"
         self.ThereXpath = "//div[@class='trip-duration__input-wrapper --departure']"
         self.ValueToXpath = "//input[@class='trip-duration__date-input --active']"
         self.FromThereXpath = "//div[@class='trip-duration__input-wrapper --return']"
@@ -25,11 +23,11 @@ class MainPage:
         self.CalendarDayXpath = "//div[@class='calendar__day-cell ']"
         self.CalendarDayToodayXpath = "//div[@class='calendar__day-cell today']"
         self.PassiveInputDateXpath1 = "//div[1]/div/input[@class='trip-duration__date-input']"
+        self.DropdownXpath = "//div[@class='autocomplete__dropdown']/section"
 
 
     def findTickets(self, fromC, toC):
-
-        ElementOperations.Input(locatorType="Xpath", locator=self.openBookingXpath).click()         #Remove checkbox
+        ElementOperations.Input(locatorType="Xpath", locator=self.openBookingXpath).click()  # Remove checkbox
         ElementOperations.Button(locatorType="Xpath", locator=self.ThereXpath).click()              #There .Куда
 
         day = MainPageLogic.logic().chooseRandomDate()
@@ -38,14 +36,13 @@ class MainPage:
         ElementOperations.Button(locatorType="Xpath", locator=self.FromThereXpath).click()          #Back  .Обратно
         ElementOperations.Button(locatorType="Xpath", locator=self.BackTicketXpath).click()         #dont need backtitle
 
-        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).click()                  # click [FROM]
+        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).click()                # click [FROM]
         ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(Keys.BACKSPACE)
-        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(fromC)    #send text [FROM]
+        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(fromC)            #send text [FROM]
 
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).click()                  #click [TO]
-        ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(toC)        #send text [TO]
-        time.sleep(1) # тут без слипа вот прям вообще никак не получалось
-        ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).click()                  # click [FROM]
+        ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(toC)                #send text [TO]
+        ElementOperations.Button(locatorType="Xpath", locator=self.DropdownXpath)._find()           #wait for text
         ElementOperations.Button(locatorType="Xpath", locator=self.ConfirmXpath).click()            # CONFIRM
 
 
