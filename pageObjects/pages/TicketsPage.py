@@ -16,6 +16,7 @@ class Ticketspage:
         self.BagageOpenedAll = "//label[@for='baggage_all']"
         self.FullBagageXpath = "//label[@for='baggage_full_baggage']"
         self.BagageTitleTextXpath = "//div[@class='ticket-tariffs__title']"
+        self.TicketOriginDateXpath = "//div[@class='segment-route__endpoint origin']/div[@class='segment-route__date']"
 
     def findTickets(self, position=0):
         logger.info("Trying to find list of tickets text")
@@ -23,6 +24,12 @@ class Ticketspage:
         logger.info("Trying to find lowest price")
         lowestPrice = TicketPageLogic.logic().checkValues(tickets)
         return tickets[position], lowestPrice
+
+    def findDates(self):
+        originDates = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketOriginDateXpath).find()
+        datesRE = TicketPageLogic.logic().onlyDay(originDates[0])
+        return datesRE
+
 
     def findStraightPath(self):
         logger.info("Trying to click 'Прямой' button")

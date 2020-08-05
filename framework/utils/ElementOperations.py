@@ -48,6 +48,10 @@ class Element(BaseElement):
     def click(self):
         self.element.click()
 
+    def getText(self):
+        self._find()
+        return self.element.text
+
     #def find(self):
     #    self.element.
 

@@ -33,9 +33,9 @@ class MainPage:
         ElementOperations.Button(locatorType="Xpath", locator=self.ThereXpath).click()              #There .Куда
         logger.info("Trying to choose a random day")
         day = MainPageLogic.logic().chooseRandomDate()
+        dayText = ElementOperations.Element(element=day).getText()
         logger.info("Trying to click on a random day")
         ElementOperations.Element(element=day).click()                                              #click on random day
-
         logger.info("Trying to click back button")
         ElementOperations.Button(locatorType="Xpath", locator=self.FromThereXpath).click()          #Back  .Обратно
         logger.info("Trying to click 'Обратный билет не нужен' button")
@@ -52,12 +52,18 @@ class MainPage:
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).click()                  #click [TO]
         logger.info("Trying to send text " + toC + " to TO input")
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(toC)                #send text [TO]
+        logger.info("Trying to click TO input")
+        ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).click()
         logger.info("Trying to find dropdown")
-        ElementOperations.Button(locatorType="Xpath", locator=self.DropdownXpath)._find()           #wait for text
+        try:
+            ElementOperations.Button(locatorType="Xpath", locator=self.DropdownXpath)._find(2)           #wait for text
+        except:
+            pass
         logger.info("Trying to click TO input")
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).click()  # click [TO]
         logger.info("Trying to click confirm button")
         ElementOperations.Button(locatorType="Xpath", locator=self.ConfirmXpath).click()            # CONFIRM
+        return dayText
 
 
 
