@@ -27,22 +27,34 @@ class MainPage:
 
 
     def findTickets(self, fromC, toC):
+        logger.info("Trying to remvoe booking checkbox")
         ElementOperations.Input(locatorType="Xpath", locator=self.openBookingXpath).click()  # Remove checkbox
+        logger.info("Trying to click THERE button")
         ElementOperations.Button(locatorType="Xpath", locator=self.ThereXpath).click()              #There .Куда
-
+        logger.info("Trying to choose a random day")
         day = MainPageLogic.logic().chooseRandomDate()
+        logger.info("Trying to click on a random day")
         ElementOperations.Element(element=day).click()                                              #click on random day
 
+        logger.info("Trying to click back button")
         ElementOperations.Button(locatorType="Xpath", locator=self.FromThereXpath).click()          #Back  .Обратно
+        logger.info("Trying to click 'Обратный билет не нужен' button")
         ElementOperations.Button(locatorType="Xpath", locator=self.BackTicketXpath).click()         #dont need backtitle
 
+        logger.info("Trying to click FROM button")
         ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).click()                # click [FROM]
+        logger.info("Trying to send BACKSPASE button to input")
         ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(Keys.BACKSPACE)
+        logger.info("Trying to send text " + fromC + " to FROM input")
         ElementOperations.Input(locatorType="Xpath", locator=self.FromXpath).send(fromC)            #send text [FROM]
 
+        logger.info("Trying to click TO input")
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).click()                  #click [TO]
+        logger.info("Trying to send text " + toC + " to TO input")
         ElementOperations.Input(locatorType="Xpath", locator=self.ToXpath).send(toC)                #send text [TO]
+        logger.info("Trying to find dropdown")
         ElementOperations.Button(locatorType="Xpath", locator=self.DropdownXpath)._find()           #wait for text
+        logger.info("Trying to click confirm button")
         ElementOperations.Button(locatorType="Xpath", locator=self.ConfirmXpath).click()            # CONFIRM
 
 

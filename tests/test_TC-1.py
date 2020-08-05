@@ -22,8 +22,10 @@ class TestSuite1:
     def test_one(self, fromC, toC):
         logger.info("Trying to open url: " + SITE)
         LinkOperations.Link(link=SITE).get()
+        logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         MainPage.MainPage().findTickets(fromC, toC)
         lowest = TicketsPage.Ticketspage().findTickets(0)
+        logger.info("Trying to assert " + str(lowest[0]) + " and " + str(lowest[1]))
         assert lowest[0] == lowest[1], "The cheapest element is not first"
 
     @pytest.mark.parametrize("fromC , toC",
@@ -32,9 +34,12 @@ class TestSuite1:
     def test_two(self, fromC, toC):
         logger.info("Trying to open url: " + SITE)
         LinkOperations.Link(link=SITE).get()
+        logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         MainPage.MainPage().findTickets(fromC, toC)
+        logger.info("Trying to find straight path")
         TicketsPage.Ticketspage().findStraightPath()
         lowest = TicketsPage.Ticketspage().findTickets(-1)
+        logger.info("Trying to assert " + str(lowest[0]) + " and " + str(lowest[1]))
         assert lowest[0] == lowest[1], "The cheapest element is not last"
 
     @pytest.mark.parametrize("fromC , toC",
@@ -43,8 +48,11 @@ class TestSuite1:
     def test_three(self, fromC, toC):
         logger.info("Trying to open url: " + SITE)
         LinkOperations.Link(link=SITE).get()
+        logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         MainPage.MainPage().findTickets(fromC, toC)
+        logger.info("Trying to set baggage")
         data = TicketsPage.Ticketspage().setBagage()
+        logger.info("Trying to assert " + str(data[0]) + " and " + str(data[1]))
         assert data[0] == data[1], "quantity of tickets with bagage are not equal tickets quantity"
 
 
