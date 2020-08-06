@@ -1,9 +1,8 @@
 from framework.logger.logger import Logger
 from framework.utils import ElementOperations
 from pageObjects.pages.logic import TicketPageLogic
-from pageObjects.pages.logic import MainPageLogic
-import time
-import re
+
+
 
 logger = Logger(logger="TicketsPage").getlog()
 
@@ -18,6 +17,11 @@ class Ticketspage:
         self.FullBagageXpath = "//label[@for='baggage_full_baggage']"
         self.BagageTitleTextXpath = "//div[@class='ticket-tariffs__title']"
         self.TicketOriginDateXpath = "//div[@class='segment-route__endpoint origin']/div[@class='segment-route__date']"
+        self.loaderAnimationFinishedXpath = "//div[@class='loader__stripes --animation-finished --blue']"
+
+    def waitLoad(self):
+        logger.info("Waiting for all results loaded")
+        ElementOperations.Button("Xpath", self.loaderAnimationFinishedXpath)._find()
 
     def findTickets(self, position=0):
         logger.info("Trying to find list of tickets text")
@@ -28,7 +32,7 @@ class Ticketspage:
 
     def findDates(self):
         originDates = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketOriginDateXpath).find()
-        datesRE = TicketPageLogic.logic().onlyDay(originDates[0])
+        datesRE = TicketPageLogic.logic().onlyDay(originDates)
         return datesRE
 
 

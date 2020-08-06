@@ -2,8 +2,7 @@ from framework.logger.logger import Logger
 from framework.utils import ElementOperations
 from pageObjects.pages.logic import MainPageLogic
 from framework.utils.BaseElement import Keys
-import time
-import pytest
+
 
 
 logger = Logger(logger="MainPage").getlog()

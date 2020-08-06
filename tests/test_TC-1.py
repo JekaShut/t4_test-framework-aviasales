@@ -3,7 +3,7 @@ from framework.logger.logger import Logger
 from framework.utils import LinkOperations, ElementOperations
 from pageObjects.pages import MainPage, TicketsPage
 import pytest
-import time
+
 
 logger = Logger(logger="TC-1").getlog()
 
@@ -22,7 +22,9 @@ class TestSuite1:
         LinkOperations.Link(link=SITE).get()
         logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         randomDay = MainPage.MainPage().findTickets(fromC, toC)
+        TicketsPage.Ticketspage().waitLoad()
         originDay = TicketsPage.Ticketspage().findDates()
+        randomDay = [randomDay] * len(originDay)
         lowest = TicketsPage.Ticketspage().findTickets(0)
         logger.info("Trying to assert " + str(originDay) + " and " + str(randomDay))
         assert randomDay == originDay, "Selected date and ticket date is not equals"
@@ -35,9 +37,12 @@ class TestSuite1:
         LinkOperations.Link(link=SITE).get()
         logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         randomDay = MainPage.MainPage().findTickets(fromC, toC)
+        TicketsPage.Ticketspage().waitLoad()
         originDay = TicketsPage.Ticketspage().findDates()
+        randomDay = [randomDay] * len(originDay)
         logger.info("Trying to find straight path")
         TicketsPage.Ticketspage().findStraightPath()
+        TicketsPage.Ticketspage().waitLoad()
         lowest = TicketsPage.Ticketspage().findTickets(-1)
         logger.info("Trying to assert " + str(originDay) + " and " + str(randomDay))
         assert randomDay == originDay, "Selected date and ticket date is not equals"
@@ -50,12 +55,16 @@ class TestSuite1:
         LinkOperations.Link(link=SITE).get()
         logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         randomDay = MainPage.MainPage().findTickets(fromC, toC)
+
         originDay = TicketsPage.Ticketspage().findDates()
+        randomDay = [randomDay]*len(originDay)
         logger.info("Trying to set baggage")
+        TicketsPage.Ticketspage().waitLoad()
         data = TicketsPage.Ticketspage().setBagage()
         logger.info("Trying to assert " + str(originDay) + " and " + str(randomDay))
         assert randomDay == originDay, "Selected date and ticket date is not equals"
         logger.info("Trying to assert " + str(data[0]) + " and " + str(data[1]))
         assert data[0] == data[1], "quantity of tickets with bagage are not equal tickets quantity"
+
 
 
