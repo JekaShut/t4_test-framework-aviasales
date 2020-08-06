@@ -32,7 +32,7 @@ class MainPage:
         logger.info("Trying to choose a random day")
         day = MainPageLogic.logic().chooseRandomDate()
         dayText = ElementOperations.Element(element=day).getText()
-        logger.info("Trying to click on a random day")
+        logger.info("Trying to click on a random day " + dayText)
         ElementOperations.Element(element=day).click()                                              #click on random day
         logger.info("Trying to click back button")
         ElementOperations.Button(locatorType="Xpath", locator=self.FromThereXpath).click()          #Back  .Обратно

@@ -20,7 +20,7 @@ class Ticketspage:
         self.loaderAnimationFinishedXpath = "//div[@class='loader__stripes --animation-finished --blue']"
 
     def waitLoad(self):
-        logger.info("Waiting for all results loaded")
+        logger.info("Waiting for all results load")
         ElementOperations.Button("Xpath", self.loaderAnimationFinishedXpath)._find()
 
     def findTickets(self):
