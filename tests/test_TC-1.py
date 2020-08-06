@@ -22,14 +22,19 @@ class TestSuite1:
         LinkOperations.Link(link=SITE).get()
         logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         randomDay = MainPage.MainPage().findTickets(fromC, toC)
+        logger.info("Waiting for all results load")
         TicketsPage.Ticketspage().waitLoad()
         originDay = TicketsPage.Ticketspage().findDates()
         randomDay = [randomDay] * len(originDay)
-        lowest = TicketsPage.Ticketspage().findTickets(0)
+        logger.info("Trying to find tickets")
+        tickets = TicketsPage.Ticketspage().findTickets()
+        logger.info("Trying to find lowest price")
+        lowestTicket = TicketsPage.Ticketspage().findLowestPrice(tickets)
+        ticket = tickets[0]
         logger.info("Trying to assert " + str(originDay) + " and " + str(randomDay))
         assert randomDay == originDay, "Selected date and ticket date is not equals"
-        logger.info("Trying to assert " + str(lowest[0]) + " and " + str(lowest[1]))
-        assert lowest[0] == lowest[1], "The cheapest element is not first"
+        logger.info("Trying to assert " + str(ticket) + " and " + str(lowestTicket))
+        assert ticket == lowestTicket, "The cheapest element is not first"
 
     @pytest.mark.parametrize("fromC , toC", testdata2)
     def test_two(self, fromC, toC):
@@ -37,17 +42,23 @@ class TestSuite1:
         LinkOperations.Link(link=SITE).get()
         logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         randomDay = MainPage.MainPage().findTickets(fromC, toC)
+        logger.info("Waiting for all results load")
         TicketsPage.Ticketspage().waitLoad()
         originDay = TicketsPage.Ticketspage().findDates()
         randomDay = [randomDay] * len(originDay)
         logger.info("Trying to find straight path")
         TicketsPage.Ticketspage().findStraightPath()
+        logger.info("Waiting for all results load")
         TicketsPage.Ticketspage().waitLoad()
-        lowest = TicketsPage.Ticketspage().findTickets(-1)
+        logger.info("Trying to find tickets")
+        tickets = TicketsPage.Ticketspage().findTickets()
+        logger.info("Trying to find lowest price")
+        lowestTicket = TicketsPage.Ticketspage().findLowestPrice(tickets)
+        ticket = tickets[-1]
         logger.info("Trying to assert " + str(originDay) + " and " + str(randomDay))
         assert randomDay == originDay, "Selected date and ticket date is not equals"
-        logger.info("Trying to assert " + str(lowest[0]) + " and " + str(lowest[1]))
-        assert lowest[0] == lowest[1], "The cheapest element is not last"
+        logger.info("Trying to assert " + str(ticket) + " and " + str(lowestTicket))
+        assert ticket == lowestTicket, "The cheapest element is not last"
 
     @pytest.mark.parametrize("fromC , toC", testdata3)
     def test_three(self, fromC, toC):
@@ -55,11 +66,13 @@ class TestSuite1:
         LinkOperations.Link(link=SITE).get()
         logger.info("Going to enter testdata on main page: " + fromC + " , " + toC)
         randomDay = MainPage.MainPage().findTickets(fromC, toC)
-
+        logger.info("Waiting for all results load")
+        TicketsPage.Ticketspage().waitLoad()
         originDay = TicketsPage.Ticketspage().findDates()
         randomDay = [randomDay]*len(originDay)
-        logger.info("Trying to set baggage")
+        logger.info("Waiting for all results load")
         TicketsPage.Ticketspage().waitLoad()
+        logger.info("Trying to set baggage")
         data = TicketsPage.Ticketspage().setBagage()
         logger.info("Trying to assert " + str(originDay) + " and " + str(randomDay))
         assert randomDay == originDay, "Selected date and ticket date is not equals"

@@ -23,12 +23,15 @@ class Ticketspage:
         logger.info("Waiting for all results loaded")
         ElementOperations.Button("Xpath", self.loaderAnimationFinishedXpath)._find()
 
-    def findTickets(self, position=0):
+    def findTickets(self):
         logger.info("Trying to find list of tickets text")
         tickets = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketTextXpath).find()
+        return tickets
+
+    def findLowestPrice(self, tickets):
         logger.info("Trying to find lowest price")
         lowestPrice = TicketPageLogic.logic().checkValues(tickets)
-        return tickets[position], lowestPrice
+        return lowestPrice
 
     def findDates(self):
         originDates = ElementOperations.ManyElements(locatorType="Xpath", locator=self.TicketOriginDateXpath).find()
