@@ -22,6 +22,10 @@ class BaseElement(ABC):
         self.element = element
 
     def _find(self, WaitTime = WaitTime):
+        '''
+        :param WaitTime: time in seconds while the driver will try to find an element
+        :return: element
+        '''
         wait = WebDriverWait(self.driver, WaitTime)
         if self.locatorType == "Xpath":
             try:
@@ -58,6 +62,10 @@ class BaseElement(ABC):
 
 
     def _finds(self, WaitTime = WaitTime):
+        '''
+        :param WaitTime: time in seconds while the driver will try to find an element
+        :return: Many elements
+        '''
         wait = WebDriverWait(self.driver, WaitTime)
         if self.locatorType == "Xpath":
             try:

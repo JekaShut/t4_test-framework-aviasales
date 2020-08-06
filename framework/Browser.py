@@ -15,7 +15,6 @@ class ChromeBrowser():
     def runBrowser(self, locale="en"):
         DIR = jsonGetter.GetJson.getConfig("DIR")
         preferences = {"download.default_directory": DIR, "safebrowsing.enabled": "false"}
-
         options = webdriver.ChromeOptions()
         options.add_argument("--lang={}".format(locale))
         options.add_experimental_option("prefs", preferences)
